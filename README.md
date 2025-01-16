@@ -1,4 +1,4 @@
-# Machine Learning Assignments
+# Machine Learning
 
 Welcome to the **Machine Learning** repository! This repository showcases various assignments I've worked on, implementing fundamental machine learning models. The following models are included:
 
