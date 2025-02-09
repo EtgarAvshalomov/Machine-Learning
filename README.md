@@ -2,9 +2,11 @@
 
 Welcome to the **Machine Learning** repository! This repository showcases various assignments I've worked on, implementing fundamental machine learning models. The following models are included:
 
-- **1D Linear Regression**
-- **N-Dimensional Linear Regression**
+- **Linear Regression 1 Dimension**
+- **Linear Regression N Dimensions**
 - **Polynomial Regression**
+- **Regression Tree Model Selection & Feature Selection**
+- **Single Order Polynomial Regression Model Selection**
 
 Each model is implemented in Python, utilizing libraries like `numpy`, `pandas`, `matplotlib`, and `scikit-learn` for data manipulation, visualization, and model building. Below is an overview of each notebook:
 
