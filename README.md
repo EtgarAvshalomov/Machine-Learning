@@ -43,6 +43,35 @@ Key Steps:
 - Comparing the performance of various models using MSE.
 - Visualizing the polynomial fits to determine the best degree.
 
+## Regression Tree Model Selection & Feature Selection
+
+### Feature Selection: Ridge vs. Lasso Regression
+
+- Implementing **Ridge** and **Lasso** regression to compare their effects on feature selection.
+- Exploring the impact of different alpha values on coefficient shrinkage.
+- Visualizing the differences in feature selection using plots.
+
+### Regression Tree Model Selection
+
+Implementing **Decision Tree Regression** and exploring its behavior with different hyperparameters:
+- **Max Depth Selection**: Analyzing how tree depth affects model performance.
+- **Max Leaf Nodes Selection**: Evaluating tree complexity using varying numbers of leaf nodes.
+- Comparing training and test errors to assess overfitting and underfitting.
+
+### Random Forest Optimization
+
+Implementing **Random Forest Regression** and tuning hyperparameters for optimal performance:
+- Finding the best **max depth** and **max leaf nodes** for improved generalization.
+- Comparing test errors across different configurations.
+- Visualizing results to understand model performance across various parameter settings.
+
+## Single-Order Polynomial Regression Model Selection
+
+- **Polynomial Regression with Regularization**: Implementing ridge regression to improve model generalization.
+- **Error Analysis**: Comparing training and test errors across different polynomial orders to detect overfitting and underfitting.
+- **Visualization Improvements**: Enhancing plots for better insight into model performance.
+- **Multiple Dataset Evaluation**: Testing the model on different datasets to ensure robustness.
+
 ## Installation
 
 To get started with the models in this repository, you'll need to have Python installed along with the following dependencies:
