@@ -43,6 +43,24 @@ Key Steps:
 - Comparing the performance of various models using MSE.
 - Visualizing the polynomial fits to determine the best degree.
 
+## Encrypted Message Decoding
+
+This section extends Part A by **learning a frequency-to-character mapping** from labeled header signals, then decoding messages using this custom mapping.
+
+### Process:
+1. **Training Phase**:
+    - Analyze header signals to find optimal frequencies (1–48) via MSE minimization.
+    - Save learned frequency-symbol pairs to `Learned_Symbols2Freqs.csv`.
+2. **Decoding Phase**:
+    - Use the learned CSV to decode unknown messages, repeating MSE-based frequency selection.
+
+### Key Features:
+- **Adaptability**: Infers mappings without predefined rules.
+- **Consistency**: Maintains MSE evaluation and visualization (signal/decision plots) from Part A.
+- **Output**: Decoded message (e.g., `MACHINE_LEARNING`) with frequencies and symbols from the learned mapping.
+
+This end-to-end pipeline highlights model generalization from training data to real-world decoding tasks.
+
 ## Installation
 
 To get started with the models in this repository, you'll need to have Python installed along with the following dependencies:
