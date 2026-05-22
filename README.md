@@ -1,13 +1,20 @@
 # Machine Learning
 
-Welcome to the **Machine Learning** repository! This repository showcases various assignments I've worked on, implementing fundamental and advanced machine learning models. The following models are included:
+Welcome to the **Machine Learning** repository! This repository showcases various assignments I've worked on, implementing fundamental and advanced machine learning models.
 
-- **1D Linear Regression**
-- **N-Dimensional Linear Regression**
-- **Polynomial Regression**
-- **Classification & Clustering - Spaceship Data**
+## 👁️ Computer Vision & Object Detection (YOLO)
 
-Each model is implemented in Python, utilizing libraries like `numpy`, `pandas`, `matplotlib`, and `scikit-learn` for data manipulation, visualization, and model building. Below is an overview of each notebook:
+**Overview:** This project focuses on building an object detection pipeline using Python and YOLO (You Only Look Once). The Jupyter Notebook demonstrates the end-to-end process of preparing image data, running object detection models, and evaluating the results using modern computer vision techniques.
+
+**Key Technologies:**
+* **Language:** Python
+* **Libraries:** YOLO (Ultralytics), OpenCV, Matplotlib, Pandas
+* **Concepts:** Object Detection, Image Processing, Bounding Box Visualization, Model Evaluation
+
+**Features:**
+* Implemented a robust object detection model to identify and classify specific targets within image datasets.
+* Processed and visualized image data using OpenCV and Matplotlib.
+* Evaluated model accuracy and performance metrics directly within a Jupyter Notebook environment.
 
 ## 1D Linear Regression
 
