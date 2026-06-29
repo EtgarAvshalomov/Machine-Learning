@@ -2,6 +2,12 @@
 
 Welcome to the **Machine Learning** repository! This repository showcases various assignments I've worked on, implementing fundamental and advanced machine learning models.
 
+- **1D Linear Regression**
+- **N-Dimensional Linear Regression**
+- **Polynomial Regression**
+- **Classification & Clustering - Spaceship Data**
+- **RAG & Agents**
+
 ## 👁️ Computer Vision & Object Detection (YOLO)
 
 **Overview:** This project focuses on building an object detection pipeline using Python and YOLO (You Only Look Once). The Jupyter Notebook demonstrates the end-to-end process of preparing image data, running object detection models, and evaluating the results using modern computer vision techniques.
@@ -142,6 +148,70 @@ Model evaluation includes:
 - `xgboost`: Gradient boosting classifier
 
 This project demonstrates a complete, production-ready machine learning workflow from raw data to model evaluation.
+
+## RAG & Agents
+
+This project is split into two notebooks exploring **Retrieval-Augmented Generation (RAG)** and **LLM Agents** using state-of-the-art transformer models and the Google Agent Development Kit (ADK).
+
+### RAG (Retrieval-Augmented Generation)
+
+Implements a full RAG pipeline from scratch — embedding a corpus with a transformer model, retrieving relevant passages via cosine similarity, and generating grounded answers with an LLM.
+
+#### Datasets:
+- **Winnie The Pooh** (literary text): Paragraphs extracted and cleaned from the full-text book.
+- **Diseases & Symptoms** (Hugging Face): Structured medical records describing disease names, symptoms, and treatments.
+
+#### Embedding Models:
+- **`google/embeddinggemma-300m`** via `SentenceTransformer` — a 300M-parameter transformer used to encode both documents and queries into dense vector representations.
+- **Voyage AI** (`voyageai`) — cloud embedding API used as a second embedder for comparison against the local HuggingFace model.
+
+#### Key Steps:
+- **Data Preparation**: Text splitting into paragraphs, regex-based cleaning, and EDA (word counts, character frequencies, paragraph length distributions).
+- **Encoding**: Documents are encoded using `encode_document` and queries with `encode_query`, both normalized for cosine similarity search.
+- **Vector Search**: Cosine similarity between the query vector and all document embeddings; top-K most relevant paragraphs are retrieved.
+- **Generation**: Retrieved context is injected into a prompt and passed to:
+  - **TinyLlama 1.1B** (`TinyLlama/TinyLlama-1.1B-Chat-v1.0`) — local HuggingFace pipeline with streaming output.
+  - **Gemini API** (`gemini-3.5-flash`, `gemini-2.5-flash`) — cloud LLM for higher-quality generation.
+- **Experiments**: Varied K (1, 5, 10 retrieved paragraphs) and temperature (1.0 vs 0.5), tested on both related and unrelated queries to evaluate retrieval relevance and hallucination resistance.
+
+#### Technologies & Libraries:
+- `sentence-transformers`, `transformers`: Embedding and generation models
+- `voyageai`: Cloud embedding API
+- `google-genai`: Gemini API client
+- `nltk`, `pandas`, `matplotlib`, `seaborn`: EDA and visualization
+
+---
+
+### Agents (Google ADK Stock Analysis Agent)
+
+Builds a **Stock Analysis Agent** using the Google Agent Development Kit (ADK) powered by Gemini via LiteLLM. The agent orchestrates a multi-tool pipeline to analyze, compare, and visualize stock performance on demand.
+
+#### Tools:
+1. **Company Identifier** — extracts company names from free-text user queries.
+2. **Ticker Resolver** — resolves company names to stock ticker symbols via Yahoo Finance's autocomplete API.
+3. **Historical Stock Data** — downloads OHLC price history using `yfinance` and stores it in an in-memory cache.
+4. **Calculate Metrics** — computes min/max/average price and percentage return from cached data without exposing raw data to the LLM.
+5. **Visualize Stocks** — generates configurable multi-panel charts: raw price + 20-day SMA, normalized growth (base 100), and daily volatility (% returns).
+
+#### Agent Design:
+- **Skill file** (`SKILL.md`): Provides the agent with a structured playbook defining the exact tool-call sequence for analysis, visualization, and error-handling scenarios.
+- **Safety settings**: Blocks dangerous content; temperature set to 0.2 for consistent, deterministic responses.
+- **Guardrails**: Agent refuses non-financial queries and handles edge cases such as unknown companies, missing tickers, and unavailable historical data.
+
+#### Tests:
+- Multi-stock comparison and return ranking (Apple vs. Microsoft, Tesla vs. Nvidia)
+- Incremental follow-up queries (normalized charts for Amazon, Nvidia, Microsoft)
+- Error handling for fictional tickers ("Peaky Pookie") and low-liquidity stocks (Osem)
+- Guardrails against irrelevant and harmful requests
+
+#### Technologies & Libraries:
+- `google-adk`: Agent Development Kit (LlmAgent, Runner, FunctionTool, InMemorySessionService)
+- `litellm`: Unified LLM gateway for Gemini
+- `yfinance`: Historical stock data
+- `requests`: Yahoo Finance ticker resolution
+- `pandas`, `matplotlib`: Data processing and visualization
+
+---
 
 ## Installation
 
